@@ -13,11 +13,15 @@
 void employeeParser(char* path, ArrayList* lista);
 void saveEmployee(char* path, ArrayList* lista);
 int  searchEmployee(ArrayList* lista, int file);
+int cmpEmployeeName(void* x, void* y);
 
 //funciones de mostrar datos
 void showEmployee(Employee* pEmployee, Section* pSection, int tamSection);
 void showEmployees(ArrayList* lista, Section* pSection, int tamSection);
-void showGreatestSalary(ArrayList* x, Section* pSection, int tamSection);
+void showGreatestSalary(ArrayList* lista, Section* pSection, int tamSection);
+void sortBySalary(ArrayList* lista, Section* pSection, int tamSection);
+void showSalaryPromBySector(ArrayList* lista, Section* pSection, int tamSection);
+void sortEmployeeByNameOrder(ArrayList* lista, Section* pSection, int tamSection);
 
 void loadDescription(Section* pSection, int tamSection, int x, char* string);
 void addEmployee(ArrayList* lista, Section* pSection, int tamSection);
@@ -41,6 +45,7 @@ void hardcoreSection(Section* pSection);
 int main()
 {
     ArrayList* list = al_newArrayList();
+   // ArrayList* list2 = al_newArrayList();
     validNULL(list);
 
     Section eSection, *pSection;
@@ -70,10 +75,13 @@ do
     printf("\n=====================================");
     printf("\n8. Listar");
     printf("\n9. Listar Empleados de Mayor Salario");
+    printf("\n10. Listar Ordenado por salarios");
+    printf("\n11. Promedios de Salarios por Sector");
+    printf("\n12. Listar Alfabeticamente");
     printf("\n=====================================");
-    printf("\n10. Guardar Datos");
+    printf("\n13. Guardar Datos");
     printf("\n=====================================");
-    printf("\n11. Salir");
+    printf("\n14. Salir");
     opc=optionValid();
 
 
@@ -98,9 +106,15 @@ do
 
         case 9: showGreatestSalary(list,pSection,TAM_SECTION); break;
 
-        case 10: saveEmployee("empleados.csv",list); break;
+        case 10: sortBySalary(list,pSection,TAM_SECTION); break;
+
+        case 11: showSalaryPromBySector(list,pSection,TAM_SECTION); break;
+
+        case 12: sortEmployeeByNameOrder(list,pSection,TAM_SECTION); break;
+
+        case 13: saveEmployee("empleados.csv",list); break;
         }
-    }while(opc != 11);
+    }while(opc != 14);
 
 
 
@@ -404,7 +418,7 @@ void showEmployees(ArrayList* lista, Section* pSection, int tamSection)
         }
 
     }
-    printf("\n========================================================================================");
+    printf("\n========================================================================================\n");
 
     wait(SO);
 
@@ -785,45 +799,227 @@ void editEmployeeIdeSection(ArrayList* lista, Section* pSection, int tamSection)
 }
 
 
-void showGreatestSalary(ArrayList* x, Section* pSection, int tamSection)
+void showGreatestSalary(ArrayList* lista, Section* pSection, int tamSection)
 {
-    float maxSalary;
-    char description[20];
+    osDetect(SO);
     Employee* oneEmployee;
+
     int flag;
+    float maxSalary=0;
+    char description[20];
+    int i;
+    int j;
 
-    for(int i=0; i < tamSection; i++)
+
+                printf("\n========================================================================================");
+                printf("\nLegajo    \tNombre    \tApellido  \tSexo  \tSalario   \tSector");
+                printf("\n========================================================================================");
+
+    for(i=0; i <tamSection; i++)
     {
-        loadDescription(pSection,tamSection,oneEmployee->idSection,description);
+        loadDescription(pSection,tamSection,pSection->id,description);
+        flag=0;
 
-        printf("Sector %s\n", description);
-        flag = 0;
-
-        for(int j=0; j < x->len(x); j++)
+        for(j=0; j <lista->len(lista); j++)
         {
-            oneEmployee = (Employee*)x->get(x,j);
+            oneEmployee = (Employee*)lista->get(lista,j);
 
-            if(( oneEmployee->salary > maxSalary && oneEmployee->isEmpty == 1 && oneEmployee->idSection == (pSection + i)->id) || ((flag == 0 && oneEmployee->isEmpty == 1 && oneEmployee->idSection == (pSection + i)->id)))
+            if((oneEmployee->salary > maxSalary && oneEmployee->isEmpty == 1 && oneEmployee->idSection == pSection[i].id) || (flag == 0 && oneEmployee->isEmpty == 1 && oneEmployee->idSection == pSection[i].id) )
             {
                 maxSalary = oneEmployee->salary;
                 flag = 1;
             }
         }
 
-        for(int j=0; j < x->len(x); j++)
-        {
-            oneEmployee = (Employee*)x->get(x,j);
 
-            if( oneEmployee->salary == maxSalary && oneEmployee->idSection == (pSection + i)->id &&  oneEmployee->isEmpty == 1)
+        for(j=0; j <lista->len(lista); j++)
+        {
+            oneEmployee = (Employee*)lista->get(lista,j);
+
+            if( oneEmployee->salary == maxSalary && oneEmployee->idSection == pSection[i].id)// &&  oneEmployee->isEmpty == 1)
             {
-                printf("\n========================================================================================");
-                printf("\nLegajo    \tNombre    \tApellido  \tSexo  \tSalario   \tSector");
-                printf("\n========================================================================================");
                 showEmployee(oneEmployee,pSection,tamSection);
-                printf("\n========================================================================================");
+
             }
         }
+    }
+                printf("\n========================================================================================\n");
+wait(SO);
+}
+
+
+void sortBySalary(ArrayList* lista, Section* pSection, int tamSection)
+{
+    int i;
+    int j;
+    int flag;
+    char description[20];
+    Employee* auxEmployee;
+
+    for(i=0; i <tamSection; i++)
+    {
+        loadDescription(pSection,tamSection,pSection->id,description);
+        flag=0;
+
+    for(i=0; i<lista->len(lista)-1; i++)
+    {
+        auxEmployee = (Employee*)lista->get(lista,i);
+
+        for(j=i+1; j<lista->len(lista); j++)
+        {
+
+            auxEmployee = (Employee*)lista->get(lista,j);
+
+            if(auxEmployee[i].salary > auxEmployee[j].salary && flag == 0)
+            {
+
+                auxEmployee = (Employee*)lista->sort(lista,i,j,tamSection);
+                /*aux[i]=*(pEmployee+i);
+                *(pEmployee+i)=*(pEmployee+j);
+                *(pEmployee+j)=aux[i];*/
+            }
+        }
+    }
+}
+    osDetect(SO);
+
+    printf("\n==============================================================================");
+    printf("\n===========================E M P L E A D O S==================================");
+    printf("\n==============================================================================");
+    printf("\nLegajo    \tNombre    \tApellido  \tSexo  \tSalario   \tSector");
+    printf("\n==============================================================================");
+
+    for(i=0; i<lista->len(lista); i++)
+    {
+        auxEmployee = (Employee*)lista->get(lista,i);
+
+        if(auxEmployee->isEmpty == 1)
+        {
+            showEmployee(auxEmployee,pSection,tamSection);
+
+        }
+    }
+    printf("\n==============================================================================\n");
+    wait(SO);
+}
+
+
+void showSalaryPromBySector(ArrayList* lista, Section* pSection, int tamSection)
+{
+    int i;
+    int idSection;
+    char description[20];
+    float sumSalary=0;
+    float prom=0;
+    int count=0;
+    int flag=0;
+
+    Employee* oneEmployee;
+
+    idSection = selectSection(pSection,tamSection);
+
+    osDetect(SO);
+    printf("\n========================================================================================");
+    printf("\n===========================E M P L E A D O S============================================");
+    printf("\n========================================================================================");
+    printf("\nLegajo    \tNombre    \tApellido  \tSexo  \tSalario   \tSector");
+    printf("\n========================================================================================\n");
+
+    for(i=0; i<tamSection; i++)
+    {
+        loadDescription(pSection,tamSection,idSection,description);
+        oneEmployee = (Employee*)lista->get(lista,i);
+        flag=1;
+
+        if(oneEmployee->isEmpty == 1 && oneEmployee->idSection == idSection && flag==1)
+        {
+            sumSalary+=oneEmployee->salary;
+            count++;
+            showEmployee(oneEmployee, pSection,tamSection);
+        }
+    }
+
+    prom=sumSalary/count;
+    printf("\n\n========================================================================================\n");
+    printf("\nTOTAL DE SALARIOS DEL SECTOR: %.2f", sumSalary);
+    printf("\n========================================================================================\n");
+    printf("\nEL PROMEDIO DE SUELDOS DEL SECTOR %s ES: %.2f", description, prom);
+    printf("\n========================================================================================\n");
+
+    if(flag != 0)
+    {
+        printf("NO HAY EMPLEADOS EN EL SECTOR %s\n\n", description);
+    }
+
+    wait(SO);
+}
+
+
+void sortEmployeeByNameOrder(ArrayList* lista, Section* pSection, int tamSection)
+{
+    int i;
+    int j;
+    //int flag;
+    char description[20];
+    Employee* auxEmployee;
+
+
+
+    for(i=0; i <tamSection; i++)
+    {
+        loadDescription(pSection,tamSection,pSection->id,description);
+
+
+    for(i=0; i<lista->len(lista)-1; i++)
+    {
+        auxEmployee = (Employee*)lista->get(lista,i);
+
+        for(j=i+1; j<lista->len(lista); j++)
+        {
+            auxEmployee = (Employee*)lista->get(lista,j);
+
+            if(strcmp(auxEmployee[i].name,auxEmployee[j].name));
+                {
+                    auxEmployee = (Employee*)lista->sort(lista,i,j,0);
+                }
+
+            }
+    }
 
     }
 
+    osDetect(SO);
+
+    printf("\n==============================================================================");
+    printf("\n===========================E M P L E A D O S==================================");
+    printf("\n==============================================================================");
+    printf("\nLegajo    \tNombre    \tApellido  \tSexo  \tSalario   \tSector");
+    printf("\n==============================================================================");
+
+    for(i=0; i<lista->len(lista); i++)
+    {
+        auxEmployee = (Employee*)lista->get(lista,i);
+
+        if(auxEmployee->isEmpty == 1)
+        {
+            showEmployee(auxEmployee,pSection,tamSection);
+
+        }
+    }
+    printf("\n==============================================================================\n");
+    wait(SO);
 }
+
+
+int cmpEmployeeName(void* x, void* y)
+{
+
+ Employee* emp1 = (Employee*)x;
+ Employee* emp2 = (Employee*)y;
+
+ return strcmp(emp1->name, emp2->name);
+
+}
+
+
+

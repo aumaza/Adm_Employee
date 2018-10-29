@@ -46,3 +46,33 @@
 
 1540649259 /home/augusto/Proyectos/testeo/Adm_Employees/misFunciones.h
 
+1540808271 source:c:\users\aumaza_mecon\documents\proyects\adm_employee\arraylist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+
+1540808271 c:\users\aumaza_mecon\documents\proyects\adm_employee\arraylist.h
+
+1540808271 source:c:\users\aumaza_mecon\documents\proyects\adm_employee\misfunciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<conio.h>
+	"misFunciones.h"
+
+1540808271 c:\users\aumaza_mecon\documents\proyects\adm_employee\misfunciones.h
+
+1540840796 source:c:\users\aumaza_mecon\documents\proyects\adm_employee\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<ctype.h>
+	"misFunciones.h"
+	"employee.h"
+	"ArrayList.h"
+
+1540808271 c:\users\aumaza_mecon\documents\proyects\adm_employee\employee.h
+
