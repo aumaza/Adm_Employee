@@ -1,0 +1,48 @@
+# depslib dependency file v1.0
+1539098670 source:/home/aumaza_mecon/Proyectos/Adm_Employees/ArrayList.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+
+1539098670 /home/aumaza_mecon/Proyectos/Adm_Employees/ArrayList.h
+
+1540570185 source:/home/aumaza_mecon/Proyectos/Adm_Employees/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"misFunciones.h"
+	"employee.h"
+	"ArrayList.h"
+
+1540565324 /home/aumaza_mecon/Proyectos/Adm_Employees/misFunciones.h
+
+1540570348 /home/aumaza_mecon/Proyectos/Adm_Employees/employee.h
+
+1540570382 source:/home/aumaza_mecon/Proyectos/Adm_Employees/misFunciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<conio.h>
+	"misFunciones.h"
+
+1540579824 source:/home/augusto/Proyectos/testeo/Adm_Employees/ArrayList.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+
+1540579824 /home/augusto/Proyectos/testeo/Adm_Employees/ArrayList.h
+
+1540648977 source:/home/augusto/Proyectos/testeo/Adm_Employees/misFunciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<conio.h>
+	"misFunciones.h"
+
+1540649259 /home/augusto/Proyectos/testeo/Adm_Employees/misFunciones.h
+
