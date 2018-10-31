@@ -13,7 +13,7 @@
 int main()
 {
     ArrayList* list = al_newArrayList();
-   // ArrayList* list2 = al_newArrayList();
+    // ArrayList* list2 = al_newArrayList();
     validNULL(list);
 
     Section eSection, *pSection;
@@ -25,69 +25,150 @@ int main()
 
 
     int opc;
-do
+    do
     {
-    osDetect(SO);
-    printf("\n=====================================");
-    printf("\n--------------- M E N U -------------");
-    printf("\n=====================================");
-    printf("\n1. Altas");
-    printf("\n=====================================");
-    printf("\n2. Bajas");
-    printf("\n=====================================");
-    printf("\n3. Modificar Nombre Empleado");
-    printf("\n4. Modificar Apellido Empleado");
-    printf("\n5. Modificar Sector Empleado");
-    printf("\n6. Modificar Salario");
-    printf("\n7. Modificar Sexo");
-    printf("\n=====================================");
-    printf("\n8. Listar");
-    printf("\n9. Listar Empleados de Mayor Salario");
-    printf("\n10. Listar Ordenado por salarios");
-    printf("\n11. Promedios de Salarios por Sector");
-    printf("\n12. Listar Alfabeticamente");
-    printf("\n=====================================");
-    printf("\n13. Guardar Datos");
-    printf("\n=====================================");
-    printf("\n14. Salir");
-    opc=optionValid();
+        osDetect(SO);
+        printf("\n=====================================");
+        printf("\n--------------- M E N U -------------");
+        printf("\n=====================================");
+        printf("\n1. Altas");
+        printf("\n=====================================");
+        printf("\n2. Bajas");
+        printf("\n=====================================");
+        printf("\n3. Modificaciones");
+        /*printf("\n4. Modificar Apellido Empleado");
+        printf("\n5. Modificar Sector Empleado");
+        printf("\n6. Modificar Salario");
+        printf("\n7. Modificar Sexo");*/
+        printf("\n=====================================");
+        printf("\n4. Informes");
+        printf("\n=====================================");
+        printf("\n5. Guardar Datos");
+        printf("\n=====================================");
+        printf("\n6. Salir");
+        opc=optionValid();
 
 
         switch(opc)
         {
 
-        case 1: addEmployee(list,pSection,TAM_SECTION); break;
+        case 1:
+            addEmployee(list,pSection,TAM_SECTION);
+            break;
 
-        case 2: eraseEmployee(list,pSection,TAM_SECTION); break;
+        case 2:
+            eraseEmployee(list,pSection,TAM_SECTION);
+            break;
 
-        case 3: editEmployeeName(list,pSection,TAM_SECTION); break;
+        case 3:
 
-        case 4: editEmployeeLastName(list,pSection,TAM_SECTION); break;
+            osDetect(SO);
+            int op;
 
-        case 5: editEmployeeIdeSection(list,pSection,TAM_SECTION); break;
+            do
+            {
+                osDetect(SO);
 
-        case 6: editEmployeeSalary(list,pSection,TAM_SECTION); break;
+                printf("\n======================================");
+                printf("\nSeleccione la Operacion a Realizar");
+                printf("\n======================================\n");
+                printf("\n1. Modificar Nombre Empleado");
+                printf("\n2. Modificar Apellido Empleado");
+                printf("\n3. Modificar Sector Empleado");
+                printf("\n4. Modificar Salario");
+                printf("\n5. Modificar Sexo");
+                printf("\n6. Salir");
+                printf("\n\n======================================\n");
 
-        case 7: editEmployeeSex(list,pSection,TAM_SECTION); break;
+                op=optionValid();
+                printf("\n======================================\n");
 
-        case 8: showEmployees(list, pSection,TAM_SECTION); break;
+                switch(op)
+                {
 
-        case 9: showGreatestSalary(list,pSection,TAM_SECTION); break;
+                case 1:
+                    editEmployeeName(list,pSection,TAM_SECTION);
+                    break;
+                case 2:
+                    editEmployeeLastName(list,pSection,TAM_SECTION);
+                    break;
+                case 3:
+                    editEmployeeIdeSection(list,pSection,TAM_SECTION);
+                    break;
+                case 4:
+                    editEmployeeSalary(list,pSection,TAM_SECTION);
+                    break;
+                case 5:
+                    editEmployeeSex(list,pSection,TAM_SECTION);
+                    break;
 
-        case 10: list->sort(list,cmpEmployeeSalary,1 );
-                 showEmployees(list, pSection,TAM_SECTION); break;
+                }
+            }
+            while(op != 6);
+            break;
 
-        case 11:  showSalaryPromBySector(list,pSection,TAM_SECTION); break;
 
-        case 12:  list->sort(list,cmpEmployeeName,1 );
-                  showEmployees(list, pSection,TAM_SECTION); break;
+        case 4:
 
-        case 13: saveEmployee("empleados.csv",list); break;
+            osDetect(SO);
+            int opcion;
+
+            do
+            {
+                osDetect(SO);
+
+                printf("\n======================================");
+                printf("\nSeleccione la Operacion a Realizar");
+                printf("\n======================================\n");
+                printf("\n1. Listar Empleados");
+                printf("\n2. Listar Empleados de Mayor Salario");
+                printf("\n3. Listar Ordenado por Salario");
+                printf("\n4. Listar Promedio de Salario por Sector");
+                printf("\n5. Listar Alfabeticamente");
+                printf("\n6. Listar por Sector");
+                printf("\n7. Listar por Sexo");
+                printf("\n\n======================================\n");
+                printf("\n8. Salir");
+
+                opcion=optionValid();
+                printf("\n======================================\n");
+
+                switch(opcion)
+                {
+                case 1:
+                    showEmployees(list, pSection,TAM_SECTION);
+                    break;
+                case 2:
+                    showGreatestSalary(list,pSection,TAM_SECTION);
+                    break;
+                case 3:
+                    sortEmployeeSalary(list,pSection,TAM_SECTION);
+                    break;
+                case 4:
+                    showSalaryPromBySector(list,pSection,TAM_SECTION);
+                    break;
+                case 5:
+                    sortEmployeeName(list,pSection,TAM_SECTION);
+                    break;
+                case 6:
+                    sortEmployeeSection(list,pSection,TAM_SECTION);
+                    break;
+                case 7:
+                    sortEmployeeSex(list,pSection,TAM_SECTION);
+                    break;
+                }
+            }
+            while(opcion != 8);
+            break;
+
+        case 5:
+            saveEmployee("empleados.csv",list);
+            break;
+
         }
 
-    }while(opc != 14);
-
-
+    }
+    while(opc != 6);
 
     return 0;
 }

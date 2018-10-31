@@ -267,10 +267,10 @@ int getInt(char msj[], char error[], int limInf, int limSup, int attemp)
         printf("\n%s", error);
         printf("\n=======================================\n");
         attemp--;
+        flag=1;
 
         printf("\n%s", msj);
         scanf("%d", &dato);
-        flag=1;
     }
 
     if(flag==1)
@@ -281,7 +281,7 @@ int getInt(char msj[], char error[], int limInf, int limSup, int attemp)
         return EXIT_FAILURE;
     }
 
-     if(flag==0)
+    if(flag==0)
     {
         printf("\n=====================================");
         printf("\nUSTED INGRESO: %d", dato);

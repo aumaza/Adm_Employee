@@ -59,7 +59,10 @@ int  searchEmployee(ArrayList* lista, int file);
 void showEmployee(Employee* pEmployee, Section* pSection, int tamSection);
 void showEmployees(ArrayList* lista, Section* pSection, int tamSection);
 void showGreatestSalary(ArrayList* lista, Section* pSection, int tamSection);
-void sortBySalary(ArrayList* lista, Section* pSection, int tamSection);
+void sortEmployeeSalary(ArrayList* lista,Section* pSection,int tamSection);
+void sortEmployeeName(ArrayList* lista,Section* pSection,int tamSection);
+void sortEmployeeSection(ArrayList* lista, Section* pSection,int tamSection);
+void sortEmployeeSex(ArrayList* lista, Section* pSection, int tamSection);
 void showSalaryPromBySector(ArrayList* lista, Section* pSection, int tamSection);
 
 
@@ -82,3 +85,5 @@ Section* newSection();
 void hardcoreSection(Section* pSection);
 int cmpEmployeeSalary(void* x, void* y);
 int cmpEmployeeName(void* x, void* y);
+int cmpEmployeeSection(void* x, void* y);
+int cmpEmployeeSex(void* x, void* y);

@@ -48,6 +48,59 @@ int cmpEmployeeSalary(void* x, void* y)
 }
 
 
+int cmpEmployeeSection(void* x, void* y)
+{
+
+ Employee* emp1 = (Employee*)x;
+ Employee* emp2 = (Employee*)y;
+
+ int retorno;
+
+  if(emp1->idSection == emp2->idSection){
+
+    retorno = 0;
+  }
+  else if( emp1->idSection > emp2->idSection)
+  {
+
+    retorno = 1;
+  }
+  else{
+    retorno = -1;
+  }
+
+  return retorno;
+
+}
+
+
+int cmpEmployeeSex(void* x, void* y)
+{
+
+ Employee* emp1 = (Employee*)x;
+ Employee* emp2 = (Employee*)y;
+
+ int retorno;
+
+  if(emp1->sex == emp2->sex){
+
+    retorno = 0;
+  }
+  else if( emp1->sex > emp2->sex)
+  {
+
+    retorno = 1;
+  }
+  else{
+    retorno = -1;
+  }
+
+  return retorno;
+
+}
+
+
+
 void hardcoreSection(Section* pSection)
 {
     int i;
@@ -325,7 +378,7 @@ void showEmployees(ArrayList* lista, Section* pSection, int tamSection)
     Employee* oneEmployee;
 
     printf("\n========================================================================================");
-    printf("\n================================= E M P L E A D O S ====================================");
+    printf("\n--------------------------------- E M P L E A D O S ------------------------------------");
     printf("\n========================================================================================");
     printf("\nLegajo    \tNombre    \tApellido  \tSexo  \tSalario   \tSector");
     printf("\n========================================================================================");
@@ -798,7 +851,7 @@ void showSalaryPromBySector(ArrayList* lista, Section* pSection, int tamSection)
     printf("\nLegajo    \tNombre    \tApellido  \tSexo  \tSalario   \tSector");
     printf("\n========================================================================================\n");
 
-    for(i=0; i<lista->len(lista)-1; i++)
+    for(i=0; i<lista->len(lista); i++)
     {
         loadDescription(pSection,tamSection,idSection,description);
         oneEmployee = (Employee*)lista->get(lista,i);
@@ -827,3 +880,27 @@ void showSalaryPromBySector(ArrayList* lista, Section* pSection, int tamSection)
     wait(SO);
 }
 
+void sortEmployeeSalary(ArrayList* lista,Section* pSection,int tamSection)
+{
+        lista->sort(lista,cmpEmployeeSalary,1 );
+        showEmployees(lista, pSection,tamSection);
+}
+
+void sortEmployeeName(ArrayList* lista,Section* pSection,int tamSection)
+{
+
+    lista->sort(lista,cmpEmployeeName,1 );
+    showEmployees(lista, pSection,tamSection);
+}
+
+void sortEmployeeSection(ArrayList* lista, Section* pSection,int tamSection)
+{
+        lista->sort(lista,cmpEmployeeSection,1);
+        showEmployees(lista,pSection,tamSection);
+}
+
+void sortEmployeeSex(ArrayList* lista, Section* pSection, int tamSection)
+{
+    lista->sort(lista,cmpEmployeeSex,1);
+    showEmployees(lista,pSection,tamSection);
+}
