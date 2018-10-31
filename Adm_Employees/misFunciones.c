@@ -254,14 +254,12 @@ void sortVectorChar(char vec[], int tam)
 
 int getInt(char msj[], char error[], int limInf, int limSup, int attemp)
 {
-    //int i;
     int dato;
     int flag=0;
-    //int intentos;
-
 
     printf("\n%s", msj);
-    scanf("%d", &dato);
+
+    dato = optionValid();
 
     while((dato<limInf || dato>limSup) && (attemp>0))
     {
@@ -273,7 +271,6 @@ int getInt(char msj[], char error[], int limInf, int limSup, int attemp)
         printf("\n%s", msj);
         scanf("%d", &dato);
         flag=1;
-
     }
 
     if(flag==1)
@@ -281,6 +278,7 @@ int getInt(char msj[], char error[], int limInf, int limSup, int attemp)
         printf("\n=====================================");
         printf("\nHA EXCEDIDO LA CANTIDAD DE INTENTOS");
         printf("\n=====================================");
+        return EXIT_FAILURE;
     }
 
      if(flag==0)
@@ -288,11 +286,7 @@ int getInt(char msj[], char error[], int limInf, int limSup, int attemp)
         printf("\n=====================================");
         printf("\nUSTED INGRESO: %d", dato);
         printf("\n=====================================");
-
     }
-
-
-
 return dato;
 }
 

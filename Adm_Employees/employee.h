@@ -1,4 +1,17 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <conio.h>
+#include <ctype.h>
+
+
+
+#include "ArrayList.h"
+
+
 #ifndef EMPLOYEE_H_INCLUDED
+
+
 #define EMPLOYEE_H_INCLUDED
 
 #define MASCARA_ARCHIVO "%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^\n]\n"
@@ -31,3 +44,41 @@ char description[25];
 
 
 #endif // EMPLOYEE_H_INCLUDED
+
+
+
+//prototipos
+
+//funciones sobre los archivos
+void employeeParser(char* path, ArrayList* lista);
+void saveEmployee(char* path, ArrayList* lista);
+int  searchEmployee(ArrayList* lista, int file);
+
+
+//funciones de mostrar datos
+void showEmployee(Employee* pEmployee, Section* pSection, int tamSection);
+void showEmployees(ArrayList* lista, Section* pSection, int tamSection);
+void showGreatestSalary(ArrayList* lista, Section* pSection, int tamSection);
+void sortBySalary(ArrayList* lista, Section* pSection, int tamSection);
+void showSalaryPromBySector(ArrayList* lista, Section* pSection, int tamSection);
+
+
+void loadDescription(Section* pSection, int tamSection, int x, char* string);
+void addEmployee(ArrayList* lista, Section* pSection, int tamSection);
+int selectSection(Section* pSection, int tamSection);
+
+//funciones de administracion de datos
+void eraseEmployee(ArrayList* lista, Section* pSection, int tamSection);
+void editEmployeeSalary(ArrayList* lista, Section* pSection, int tamSection);
+void editEmployeeName(ArrayList* lista, Section* pSection, int tamSection);
+void editEmployeeLastName(ArrayList* lista, Section* pSection, int tamSection);
+void editEmployeeSex(ArrayList* lista, Section* pSection, int tamSection);
+void editEmployeeIdeSection(ArrayList* lista, Section* pSection, int tamSection);
+
+
+//constructores
+Employee* newEmployee();
+Section* newSection();
+void hardcoreSection(Section* pSection);
+int cmpEmployeeSalary(void* x, void* y);
+int cmpEmployeeName(void* x, void* y);

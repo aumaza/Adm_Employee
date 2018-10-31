@@ -5,6 +5,8 @@
 	<string.h>
 	"ArrayList.h"
 
+1540936063 .h"
+
 1539098670 /home/aumaza_mecon/Proyectos/Adm_Employees/ArrayList.h
 
 1540570185 source:/home/aumaza_mecon/Proyectos/Adm_Employees/main.c
@@ -27,6 +29,8 @@
 	<ctype.h>
 	<conio.h>
 	"misFunciones.h"
+
+1540925454 nes.h"
 
 1540579824 source:/home/augusto/Proyectos/testeo/Adm_Employees/ArrayList.c
 	<stdio.h>
@@ -75,4 +79,102 @@
 	"ArrayList.h"
 
 1540808271 c:\users\aumaza_mecon\documents\proyects\adm_employee\employee.h
+
+1540935370 source:c:\test\projects\adm_employee\arraylist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+
+1540925453 c:\test\projects\adm_employee\arraylist.h
+
+1540925454 source:c:\test\projects\adm_employee\misfunciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<conio.h>
+	"misFunciones.h"
+
+1540925454 c:\test\projects\adm_employee\misfunciones.h
+
+1540936287 source:c:\test\projects\adm_employee\employee.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<ctype.h>
+	"misFunciones.h"
+	"employee.h"
+	"ArrayList.h"
+	"misFunciones.h"
+	"employee.h"
+
+1540936287 h"
+
+1540936506 c:\test\projects\adm_employee\employee.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<ctype.h>
+	"ArrayList.h"
+
+1540936063 source:c:\test\projects\adm_employee\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<ctype.h>
+	"misFunciones.h"
+	"employee.h"
+	"ArrayList.h"
+
+1540939502 source:/home/augusto/Proyectos/testeo/Adm_Employee/ArrayList.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+
+1540939502 /home/augusto/Proyectos/testeo/Adm_Employee/ArrayList.h
+
+1540979720 source:/home/augusto/Proyectos/testeo/Adm_Employee/employee.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<ctype.h>
+	"misFunciones.h"
+	"employee.h"
+	"ArrayList.h"
+	"misFunciones.h"
+	"employee.h"
+
+1540939505 /home/augusto/Proyectos/testeo/Adm_Employee/misFunciones.h
+
+1540949093 /home/augusto/Proyectos/testeo/Adm_Employee/employee.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<ctype.h>
+	"ArrayList.h"
+
+1540949496 source:/home/augusto/Proyectos/testeo/Adm_Employee/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<ctype.h>
+	"misFunciones.h"
+	"employee.h"
+	"ArrayList.h"
+
+1540979909 source:/home/augusto/Proyectos/testeo/Adm_Employee/misFunciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<conio.h>
+	"misFunciones.h"
 

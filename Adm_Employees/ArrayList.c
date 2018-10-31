@@ -495,7 +495,7 @@ int al_sort(ArrayList* pList, int (*pFunc)(void*,void*), int order)
         {
             for(int j=i+1; j < tam ; j++)
             {
-                if(order)
+                if(order==1)
                 {
                     if( pFunc( pList->get(pList, i), pList->get(pList, j)) > 0 )
                     {
